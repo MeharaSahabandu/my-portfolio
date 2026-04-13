@@ -173,7 +173,6 @@ export default function App() {
             {[
               "Site Reliability Engineer at IFS 🔧",
               "Software Engineering Graduate - SLIIT 📚",
-              "Colombo - Sri Lanka",
             ].map((t) => (
               <span key={t} className="hero-tag">
                 {t}
@@ -285,18 +284,6 @@ export default function App() {
           <div className="about-left">
             <div className="about-avatar">
               <Bitmoji size={185} />
-            </div>
-            <div className="about-chips">
-              {[
-                "SRE @ IFS 🔧",
-                "MSc AI @ SLIIT 📚",
-                "Colombo 🇱🇰",
-                "open to work ✦",
-              ].map((c) => (
-                <span key={c} className="achip">
-                  {c}
-                </span>
-              ))}
             </div>
           </div>
           <div className="about-right">
