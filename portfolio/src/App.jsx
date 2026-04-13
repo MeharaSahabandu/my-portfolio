@@ -159,9 +159,6 @@ export default function App() {
             <a href="#skills">skills</a>
           </li>
         </ul>
-        <a href="#contact" className="nav-btn">
-          say hi →
-        </a>
       </nav>
 
       <section className="hero">
@@ -174,10 +171,9 @@ export default function App() {
           </div>
           <div className="hero-tags">
             {[
-              "SRE @ IFS 🔧",
-              "MSc AI @ SLIIT 📚",
-              "Colombo, LK 🇱🇰",
-              "open to work ✨",
+              "Site Reliability Engineer at IFS 🔧",
+              "Software Engineering Graduate - SLIIT 📚",
+              "Colombo - Sri Lanka",
             ].map((t) => (
               <span key={t} className="hero-tag">
                 {t}
