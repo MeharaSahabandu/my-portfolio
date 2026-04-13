@@ -25,14 +25,6 @@
     transform: translateY(-10px);
   }
 }
-@keyframes spin {
-  from {
-    transform: rotate(0);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 @keyframes blink {
   0%,
   100% {
@@ -40,14 +32,6 @@
   }
   50% {
     opacity: 0;
-  }
-}
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
   }
 }
 @keyframes pulse {
@@ -78,8 +62,8 @@ nav {
   border-bottom: 1px solid var(--border);
 }
 .nav-logo {
-  font-family: var(--font-ser);
-  font-size: 1.35rem;
+  font-size: 1.2rem;
+  font-weight: 700;
   color: var(--white);
   letter-spacing: 0.01em;
 }
@@ -103,7 +87,6 @@ nav {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  font-family: var(--font-sans);
   font-size: 0.78rem;
   font-weight: 500;
   padding: 0.5rem 1.3rem;
@@ -161,29 +144,43 @@ nav {
   animation: pulse 2s ease-in-out infinite;
 }
 
-.hero-greeting {
-  font-size: 0.82rem;
-  font-weight: 400;
-  color: var(--muted);
-  letter-spacing: 0.08em;
-  margin-bottom: 0.6rem;
-  opacity: 0;
-  animation: fadeUp 0.5s 0.32s both;
-}
-
 .hero-name {
-  font-family: var(--font-ser);
-  font-size: clamp(3.2rem, 7vw, 5.8rem);
-  font-weight: 400;
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 900;
   line-height: 1.05;
   color: var(--white);
-  margin-bottom: 1.2rem;
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.02em;
   opacity: 0;
-  animation: fadeUp 0.7s 0.42s both;
+  animation: fadeUp 0.7s 0.3s both;
 }
-.hero-name .italic {
-  color: var(--white);
-  font-style: normal;
+
+/* ── Typing animation ────────────────────── */
+.hero-typing {
+  display: flex;
+  align-items: center;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--muted);
+  margin-bottom: 1.6rem;
+  min-height: 1.8rem;
+  opacity: 0;
+  animation: fadeUp 0.6s 0.45s both;
+}
+.typing-prefix {
+  color: var(--muted);
+  margin-right: 0.35rem;
+}
+.typing-text {
+  color: var(--sage);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+.typing-cursor {
+  color: var(--sage);
+  font-weight: 300;
+  animation: blink 0.8s step-end infinite;
+  margin-left: 1px;
 }
 
 .hero-tags {
@@ -230,14 +227,12 @@ nav {
   border-radius: 100px;
   background: var(--white);
   color: var(--bg);
-  font-family: var(--font-sans);
   font-size: 0.82rem;
-  font-weight: 600;
+  font-weight: 700;
   text-decoration: none;
   transition: all 0.22s;
   border: none;
   cursor: pointer;
-  letter-spacing: 0.03em;
 }
 .btn-fill:hover {
   background: var(--cream);
@@ -251,14 +246,12 @@ nav {
   border-radius: 100px;
   background: transparent;
   color: var(--muted);
-  font-family: var(--font-sans);
   font-size: 0.82rem;
   font-weight: 500;
   border: 1px solid var(--border2);
   text-decoration: none;
   transition: all 0.22s;
   cursor: pointer;
-  letter-spacing: 0.03em;
 }
 .btn-line:hover {
   color: var(--white);
@@ -266,7 +259,7 @@ nav {
   transform: translateY(-2px);
 }
 
-/* ── Avatar side ─────────────────────────── */
+/* ── Avatar ──────────────────────────────── */
 .hero-right {
   display: flex;
   flex-direction: column;
@@ -278,20 +271,20 @@ nav {
 .avatar-card {
   width: 220px;
   height: 260px;
-  border: 2px solid var(--border2);
+  border: none;
   border-radius: 28px;
   overflow: hidden;
   position: relative;
   animation: float 5s ease-in-out infinite;
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
+  box-shadow: none;
 }
 .avatar-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center top;
-  border-radius: 0;
   display: block;
+  border-radius: 0;
 }
 .hero-right-stats {
   display: grid;
@@ -311,9 +304,8 @@ nav {
   border-color: var(--border2);
 }
 .mini-stat-n {
-  font-family: var(--font-ser);
   font-size: 1.6rem;
-  font-weight: 400;
+  font-weight: 900;
   color: var(--white);
   line-height: 1;
 }
@@ -326,39 +318,6 @@ nav {
   margin-top: 0.25rem;
 }
 
-/* ── Divider ticker ──────────────────────── */
-.ticker {
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  overflow: hidden;
-  padding: 0.85rem 0;
-  position: relative;
-  z-index: 1;
-}
-.ticker-track {
-  display: flex;
-  width: max-content;
-  animation: marquee 24s linear infinite;
-}
-.t-item {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  padding: 0 2.8rem;
-  white-space: nowrap;
-  font-size: 0.68rem;
-  font-weight: 500;
-  color: var(--muted2);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-.t-dot {
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  background: var(--muted2);
-}
-
 /* ── Section base ────────────────────────── */
 .wrap {
   max-width: 1060px;
@@ -367,7 +326,7 @@ nav {
 }
 .s-label {
   font-size: 0.68rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--sage);
@@ -376,25 +335,20 @@ nav {
   animation: fadeUp 0.5s 0.1s forwards;
 }
 .s-title {
-  font-family: var(--font-ser);
-  font-size: clamp(2rem, 4.5vw, 3.2rem);
-  font-weight: 400;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 900;
   color: var(--white);
   line-height: 1.15;
   margin-bottom: 3rem;
+  letter-spacing: -0.01em;
   opacity: 0;
   animation: fadeUp 0.5s 0.2s forwards;
 }
-.s-title em {
-  font-style: normal;
-  color: var(--white);
-}
 
-/* ── Bento grid (services) ───────────────── */
+/* ── Bento services ──────────────────────── */
 .bento {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto auto;
   gap: 1px;
   background: var(--border);
   border-radius: 24px;
@@ -404,7 +358,6 @@ nav {
   background: var(--card);
   padding: 1.8rem 2rem;
   transition: background 0.25s;
-  position: relative;
 }
 .bento-cell:hover {
   background: var(--card2);
@@ -424,8 +377,8 @@ nav {
   margin-bottom: 1rem;
 }
 .bento-name {
-  font-family: var(--font-ser);
-  font-size: 1.15rem;
+  font-size: 1rem;
+  font-weight: 700;
   color: var(--white);
   margin-bottom: 0.5rem;
 }
@@ -445,7 +398,7 @@ nav {
 }
 .pf {
   font-size: 0.7rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.1em;
   padding: 0.38rem 1rem;
   border-radius: 100px;
@@ -495,7 +448,7 @@ nav {
   top: 1rem;
   right: 1rem;
   font-size: 0.6rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.1em;
   padding: 0.25rem 0.6rem;
   border-radius: 100px;
@@ -515,17 +468,16 @@ nav {
 }
 .pstack {
   font-size: 0.62rem;
-  font-weight: 500;
+  font-weight: 600;
   padding: 0.2rem 0.6rem;
   border-radius: 5px;
   background: rgba(255, 255, 255, 0.05);
   color: var(--muted);
   border: 1px solid var(--border);
-  letter-spacing: 0.04em;
 }
 .pcard-name {
-  font-family: var(--font-ser);
-  font-size: 1.15rem;
+  font-size: 1.05rem;
+  font-weight: 700;
   color: var(--white);
   margin-bottom: 0.4rem;
 }
@@ -536,7 +488,7 @@ nav {
   line-height: 1.7;
 }
 
-/* ── About (two col) ─────────────────────── */
+/* ── About ───────────────────────────────── */
 .about-grid {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -552,11 +504,9 @@ nav {
 .about-avatar {
   width: 190px;
   height: 220px;
-  border-radius: 24px;
-  border: 2px solid var(--border2);
+  border-radius: 20px;
+  border: none;
   overflow: hidden;
-  position: relative;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
 }
 .about-avatar img {
   width: 100%;
@@ -573,7 +523,7 @@ nav {
 }
 .achip {
   font-size: 0.68rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.06em;
   padding: 0.4rem 0.9rem;
   border-radius: 10px;
@@ -581,8 +531,6 @@ nav {
   color: var(--muted);
   background: var(--card);
   text-align: center;
-}
-.about-right {
 }
 .about-right p {
   font-size: 0.92rem;
@@ -593,7 +541,7 @@ nav {
 }
 .about-right strong {
   color: var(--white);
-  font-weight: 500;
+  font-weight: 700;
 }
 .about-numbers {
   display: flex;
@@ -603,8 +551,8 @@ nav {
   border-top: 1px solid var(--border);
 }
 .anum-n {
-  font-family: var(--font-ser);
   font-size: 2.4rem;
+  font-weight: 900;
   color: var(--white);
   line-height: 1;
 }
@@ -617,7 +565,7 @@ nav {
   margin-top: 0.3rem;
 }
 
-/* ── Skills strip ────────────────────────── */
+/* ── Skills ──────────────────────────────── */
 .skills-wrap {
   border: 1px solid var(--border);
   border-radius: 20px;
@@ -639,7 +587,7 @@ nav {
 }
 .skill-cat {
   font-size: 0.68rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--muted);
@@ -697,9 +645,8 @@ nav {
   pointer-events: none;
 }
 .contact-big {
-  font-family: var(--font-ser);
-  font-style: normal;
   font-size: clamp(2.8rem, 6vw, 4.5rem);
+  font-weight: 900;
   color: var(--white);
   opacity: 0.08;
   line-height: 1;
@@ -707,9 +654,8 @@ nav {
   user-select: none;
 }
 .contact-title {
-  font-family: var(--font-ser);
-  font-size: 1.9rem;
-  font-weight: 400;
+  font-size: 1.8rem;
+  font-weight: 900;
   color: var(--white);
   margin-bottom: 0.6rem;
 }
@@ -736,7 +682,7 @@ nav {
   border: 1px solid var(--border);
   color: var(--muted);
   font-size: 0.78rem;
-  font-weight: 500;
+  font-weight: 600;
   text-decoration: none;
   transition: all 0.2s;
   letter-spacing: 0.04em;
@@ -769,10 +715,6 @@ footer {
   .hero {
     grid-template-columns: 1fr;
     padding: 6rem 1.5rem 3rem;
-    text-align: center;
-  }
-  .hero-left {
-    align-items: center;
   }
   .hero-right {
     display: none;
@@ -788,10 +730,7 @@ footer {
   }
   .about-grid {
     grid-template-columns: 1fr;
-  }
-  .about-left {
-    flex-direction: row;
-    align-items: flex-start;
+    gap: 2.5rem;
   }
   .contact-box {
     padding: 2.5rem 1.5rem;
