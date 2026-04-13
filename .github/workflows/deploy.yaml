@@ -22,14 +22,14 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: ./react-cicd-github
+        working-directory: ./my-portfolio
 
       - name: Build the project
         run: npm run build
-        working-directory: ./react-cicd-github
+        working-directory: ./my-portfolio
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./react-cicd-github/dist
+          publish_dir: ./my-portfolio/dist
